@@ -10,7 +10,7 @@ A lightweight Redis-like in-memory key-value store implemented from scratch in C
 
 1. **Build server, then run it**
    ```bash
-    g++ -Wall -Wextra -Og -g server.cpp -o server
+   g++ -Wall -Wextra -Og -g server.cpp -o server
    
    ./server
    ```
