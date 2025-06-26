@@ -72,6 +72,7 @@ static int32_t write_all(int fd, const uint8_t *buf, size_t n)
         n -= (size_t)rv;
         buf += rv;
     }
+
     return 0;
 }
 
@@ -85,8 +86,9 @@ static void buf_append(vector<uint8_t> &buf, const uint8_t *data, size_t len)
 static int32_t send_req(int fd, const uint8_t *text, size_t len)
 {
     if (len > k_max_msg)
+    {
         return -1;
-
+    }
     vector<uint8_t> wbuf;
     buf_append(wbuf, (const uint8_t *)&len, 4); // assume little endian
     buf_append(wbuf, text, len);
@@ -105,6 +107,7 @@ static int32_t read_res(int fd)
         msg(errno == 0 ? "EOF" : "read() error");
         return err;
     }
+
     uint32_t len = 0;
     memcpy(&len, rbuf.data(), 4); // assume little endian
 
@@ -165,6 +168,7 @@ int main()
             goto L_DONE;
         }
     }
+
     for (size_t i = 0; i < query_list.size(); ++i)
     {
         int32_t err = read_res(fd);
