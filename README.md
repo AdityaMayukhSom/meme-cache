@@ -10,16 +10,16 @@ A lightweight Redis-like in-memory key-value store implemented from scratch in C
 
 1. **Build server, then run it**
    ```bash
-   g++ -Wall -Wextra -Og -g server.cpp -o server
+   make server
    
-   ./server
+   ./bin/server
    ```
     Server runs on port 1234
 
 2. **Build client, then run it**
 
    ```bash
-   g++ -Wall -Wextra -Og -g client.cpp -o client
+   make client
    
-   ./client
+   ./bin/client
    ```
